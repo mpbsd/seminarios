@@ -31,7 +31,7 @@ def authorship(author, title, year, month, day):  # {{{
         Month[month],
         day,
     )
-    with open("auth.tex", "w") as afile:
+    with open("brew/auth.tex", "w") as afile:
         print(acmd, file=afile)  # }}}
 
 
@@ -63,7 +63,7 @@ def sendmail(author, address, title, year, month, day, cert):  # {{{
     """.format(
         author=author, title=title, year=year, month=month, day=day
     )
-    with open("mail.txt", "w") as f:
+    with open("brew/mail.txt", "w") as f:
         print(body, file=f)
     subject = r"certificado de apresentação do seu seminário de geometria"
     sendcmd = r"mutt -s '{subject}' -a {file} -- {email} < mail.txt".format(
@@ -73,7 +73,7 @@ def sendmail(author, address, title, year, month, day, cert):  # {{{
 
 
 def main():
-    with open("pkgs/data.json", "r") as raw_json_file:
+    with open("data/2023_1.json", "r") as raw_json_file:
         json_file = json.load(raw_json_file)
         for talk in json_file:
             d = date.match(talk["date"])
@@ -81,7 +81,7 @@ def main():
             M = d.group(2)
             D = d.group(3)
             authorship(talk["author"], talk["title"], Y, M, D)
-            genpdf(talk["author"], talk["title"], Y, M, D)
+            # genpdf(talk["author"], talk["title"], Y, M, D)
             # sendmail(
             #     talk["author"],
             #     talk["email"],
