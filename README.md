@@ -1,4 +1,3 @@
-Certificados criados para o seminário do programa de pós-graduação em matemática
-================================================================================
+# Certificados para o Seminário do Programa de Pós-Graduação em Matemática
 
 TODO

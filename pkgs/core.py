@@ -35,7 +35,7 @@ def authorship(author, title, year, month, day):  # {{{
         print(acmd, file=afile)  # }}}
 
 
-def genpdf(author, title, year, month, day):  # {{{
+def genpdf(year, month, day):  # {{{
     os.system("xelatex main && xelatex main")
     pdfname = "cert_{year}_{month}_{day}.pdf".format(
         year=year,
@@ -73,7 +73,7 @@ def sendmail(author, address, title, year, month, day, cert):  # {{{
 
 
 def main():
-    with open("data/2023_1.json", "r") as raw_json_file:
+    with open("data/012023.json", "r") as raw_json_file:
         json_file = json.load(raw_json_file)
         for talk in json_file:
             d = date.match(talk["date"])
